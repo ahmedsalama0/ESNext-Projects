@@ -1,0 +1,55 @@
+.icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.icon:hover {
+  cursor: pointer;
+}
+
+.todo-item {
+  border: 1px solid #000;
+  width: 20rem;
+  padding: 0 0.8rem;
+  border-radius: 7px;
+  margin: 1.5rem 0;
+}
+
+.todo-para {
+  display: flex;
+  justify-content: space-between;
+}
+
+.strike {
+  text-decoration: line-through;
+}
+
+div.strike {
+  position: relative;
+}
+
+div.strike::before {
+  z-index: 9999;
+  content: ' ';
+  position: absolute;
+  top: 50%;
+  left: 7px;
+  border-bottom: 2px solid #000;
+  width: 95%;
+}
+
+.disabled {
+  color: gray;
+}
+
+div.disabled .icon:hover {
+  cursor: no-drop;
+}
+
+.current-div {
+  background-color: red;
+}
+
+.hidden {
+  display: none;
+}
