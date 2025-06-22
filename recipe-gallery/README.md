@@ -4,7 +4,7 @@ A responsive **JavaScript Recipe Gallery** that dynamically fetches and displays
 
 ## 🚀 Live Demo
 
-[🔗 View Live Site](https://your-username.github.io/recipe-gallery/)
+[🔗 View Live Site](https://ephemeral-souffle-63d11e.netlify.app/)
 
 ## 🛠️ Technologies Used
 
