@@ -1,6 +1,13 @@
 const container = document.querySelector('.container');
 const errorSection = document.querySelector('.p-error');
 const loader = document.querySelector('.loader');
+const pizzaTab = document.querySelector('#pizza-tab');
+
+function init() {
+  if (!pizzaTab) return;
+  fetchData('pizza', pizzaTab);
+}
+init();
 
 function removeActiveClass() {
   document
