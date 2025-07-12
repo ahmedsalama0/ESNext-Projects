@@ -10,10 +10,29 @@
       integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
       crossorigin="anonymous"
     />
+    <script src="./home.js" defer></script>
   </head>
   <body>
-    <h1>Movie DB</h1>
-    <a href="home.html">home</a>
+    <div class="container">
+      <!-- <h1>Home</h1> -->
+      <ul
+        class="nav nav-pills d-flex justify-content-center align-items-center gap-5 mt-3"
+      >
+        <li class="nav-item">
+          <button class="nav-link active" aria-current="page">All</button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link">Movies</button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link">TV.</button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link disabled">Logout</button>
+        </li>
+      </ul>
+    </div>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
