@@ -19,13 +19,24 @@
         class="nav nav-pills d-flex justify-content-center align-items-center gap-5 mt-3"
       >
         <li class="nav-item">
-          <button class="nav-link active" aria-current="page">All</button>
+          <button
+            class="nav-link active"
+            aria-current="page"
+            id="all-btn"
+            onclick="fetchData( this, 'discover/movie')"
+          >
+            All
+          </button>
         </li>
         <li class="nav-item">
-          <button class="nav-link">Movies</button>
+          <button class="nav-link" onclick="fetchData(this,'movie/popular')">
+            Movies
+          </button>
         </li>
         <li class="nav-item">
-          <button class="nav-link">TV.</button>
+          <button class="nav-link" onclick="fetchData( this, 'discover/tv')">
+            TV.
+          </button>
         </li>
         <li class="nav-item">
           <button class="nav-link disabled">Logout</button>
@@ -34,7 +45,7 @@
 
       <!-- class="movie-container row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3" -->
       <div
-        class="mt-3 movie-container row row-cols-auto justify-content-center"
+        class="mt-3 gy-2 movie-container row row-cols-auto justify-content-center gap-3"
       ></div>
     </div>
 
