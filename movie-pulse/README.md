@@ -35,4 +35,4 @@ A **Single Page Application (SPA)** built with **HTML5**, **CSS3**, **Bootstrap 
 
 ## 🚀 Live Demo
 
-[🔗 Try the QuizApp](https://cheery-lollipop-d18a0c.netlify.app/)
+[🔗 Live Demo](https://cheery-lollipop-d18a0c.netlify.app/)
