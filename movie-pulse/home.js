@@ -37,11 +37,11 @@ function fetchData(curBtn_1) {
             data.results.forEach((result) => {
                 // <div class="card" style="width: 18rem;">
                 const html = `
-        <div class="card col border border-1 border-black"  style="width: 18rem;">
-          <img src="${IMAGE_BASE_URL + '/' + (result === null || result === void 0 ? void 0 : result.poster_path)}" class="card-img-top" alt="...">
+        <div data-id="${result.id}" class="card col  bg-primary-subtle"  style="width: 18rem;">
+          <img src="${IMAGE_BASE_URL + '/' + (result === null || result === void 0 ? void 0 : result.poster_path)}" class="card-img-top img-fluid" alt="...">
           <div class="card-body h-75">
             <h5 class="card-title fs-6 fw-bold">${result.title}</h5>
-            <a href="#" class="btn btn-primary">View</a>
+            <button href="#" class="btn btn-primary btn-view-details">View</button>
           </div>
         </div>
       `;
@@ -57,6 +57,18 @@ function init() {
     fetchData(currentButton);
 }
 init();
+movieContainer.addEventListener('click', (e) => {
+    const eventTarget = e.target;
+    // if (e?.target?.classList.contains('btn-view-details')) {
+    // if ((e.target as HTMLElement)?.className.includes('btn-view-details')) {
+    if (eventTarget === null || eventTarget === void 0 ? void 0 : eventTarget.className.includes('btn-view-details')) {
+        e.preventDefault();
+        console.log('btn clicked!');
+        console.log(window.location);
+        window.location.pathname = '/ahmed';
+    }
+    //console.log(e);
+});
 /*
  const html: string = `
         <div class="card" style="width: 18rem;">

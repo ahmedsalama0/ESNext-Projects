@@ -39,13 +39,15 @@ async function fetchData(
     data.results.forEach((result: any) => {
       // <div class="card" style="width: 18rem;">
       const html: string = `
-        <div class="card col border border-1 border-black"  style="width: 18rem;">
+        <div data-id="${
+          result.id
+        }" class="card col  bg-primary-subtle"  style="width: 18rem;">
           <img src="${
             IMAGE_BASE_URL + '/' + result?.poster_path
-          }" class="card-img-top" alt="...">
+          }" class="card-img-top img-fluid" alt="...">
           <div class="card-body h-75">
             <h5 class="card-title fs-6 fw-bold">${result.title}</h5>
-            <a href="#" class="btn btn-primary">View</a>
+            <button href="#" class="btn btn-primary btn-view-details">View</button>
           </div>
         </div>
       `;
@@ -60,6 +62,20 @@ function init(): void {
   fetchData(currentButton);
 }
 init();
+
+movieContainer.addEventListener('click', (e: MouseEvent) => {
+  const eventTarget = <HTMLElement>e.target;
+  // if (e?.target?.classList.contains('btn-view-details')) {
+  // if ((e.target as HTMLElement)?.className.includes('btn-view-details')) {
+  if (eventTarget?.className.includes('btn-view-details')) {
+    e.preventDefault();
+    console.log('btn clicked!');
+    console.log(window.location);
+    window.location.pathname = '/ahmed';
+  }
+
+  //console.log(e);
+});
 
 /*
  const html: string = `
