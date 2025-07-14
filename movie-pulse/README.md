@@ -36,4 +36,4 @@ A **Single Page Application (SPA)** built with **HTML5**, **CSS3**, **Bootstrap 
 ## 🔗 Live Demo
 
 Try the live version here:  
-👉 [https://cheery-lollipop-d18a0c.netlify.app/](https://cheery-lollipop-d18a0c.netlify.app/)
+👉 [https://cheery-lollipop-d18a0c.netlify.app/]
