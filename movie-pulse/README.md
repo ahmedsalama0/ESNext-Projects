@@ -33,7 +33,6 @@ A **Single Page Application (SPA)** built with **HTML5**, **CSS3**, **Bootstrap 
 - **TMDb API** for movie and TV show data
 - **Web Crypto API** for secure password hashing (SHA-256)
 
-## 🔗 Live Demo
+## 🚀 Live Demo
 
-Try the live version here:  
-👉 [https://cheery-lollipop-d18a0c.netlify.app/](DEMO)
+[🔗 Try the QuizApp](https://cheery-lollipop-d18a0c.netlify.app/)
