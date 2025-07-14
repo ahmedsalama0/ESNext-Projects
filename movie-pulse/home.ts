@@ -157,3 +157,7 @@ function goBack(): void {
   movieDetailsDiv.classList.add('d-none');
   history.back();
 }
+
+function logout(): void {
+  window.location.replace('index.html');
+}
