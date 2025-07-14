@@ -2,10 +2,15 @@ const API_KEY: string = 'd0a03d69b648864175d93fd46a6c9fff';
 const BASE_URL: string = 'https://api.themoviedb.org/3';
 const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w500';
 
+let responseData: any[] | null;
+
 const movieContainer: HTMLDivElement =
   document.querySelector('.movie-container')!;
 
 let currentButton: HTMLButtonElement = document.querySelector('.active')!;
+
+const movieDetailsDiv: HTMLDivElement =
+  document.querySelector('#movie-details')!;
 
 async function fetchData(
   curBtn: HTMLButtonElement,
@@ -34,8 +39,9 @@ async function fetchData(
     const data = await response.json();
 
     if (!data) throw new Error('No data for this category!');
-    //console.log(data);
 
+    responseData = data?.results;
+    //console.log(data);
     data.results.forEach((result: any) => {
       // <div class="card" style="width: 18rem;">
       const html: string = `
@@ -47,7 +53,7 @@ async function fetchData(
           }" class="card-img-top img-fluid" alt="...">
           <div class="card-body h-75">
             <h5 class="card-title fs-6 fw-bold">${result.title}</h5>
-            <button href="#" class="btn btn-primary btn-view-details">View</button>
+            <button class="btn btn-primary btn-view-details">View</button>
           </div>
         </div>
       `;
@@ -65,13 +71,55 @@ init();
 
 movieContainer.addEventListener('click', (e: MouseEvent) => {
   const eventTarget = <HTMLElement>e.target;
+  const id = eventTarget.closest('.card')?.getAttribute('data-id');
+  const windowURL = window.location.href;
+  const url = new URL(windowURL);
   // if (e?.target?.classList.contains('btn-view-details')) {
   // if ((e.target as HTMLElement)?.className.includes('btn-view-details')) {
   if (eventTarget?.className.includes('btn-view-details')) {
-    e.preventDefault();
-    console.log('btn clicked!');
-    console.log(window.location);
-    window.location.pathname = '/ahmed';
+    if (!responseData) return;
+    console.log(responseData);
+    let curCardDetails = responseData.find((result) => result?.id == id);
+    if (!curCardDetails) return;
+    console.log(curCardDetails);
+
+    //e.preventDefault();
+
+    //console.log('btn clicked!');
+    //console.log(window.location);
+
+    //url.searchParams.set('id', '5');
+    //history.pushState({ id: 5 }, '', url + 'ahmed');
+    //history.pushState({ id: 5 }, '', url + '/ahmed');
+    // history.pushState({ id: 5 }, '', '/ahmed');
+    //history.pushState({}, '', 'ahmed');
+    //history.pushState({}, '', `/details/${5}`);
+    history.pushState({ id }, '', `${location.pathname}/details/${id}`);
+    //history.replaceState({ id: 5 }, '', `${location.pathname}/details/${5}`);
+    //console.log(url);
+
+    //handling the movie details
+    if (!movieContainer) return;
+    movieDetailsDiv
+      .querySelector('img')
+      ?.setAttribute('src', `${IMAGE_BASE_URL}/${curCardDetails?.poster_path}`);
+    const cardTitle: HTMLHeadingElement =
+      movieDetailsDiv.querySelector('.card-title')!;
+
+    const cardText: HTMLHeadingElement =
+      movieDetailsDiv.querySelector('.card-text')!;
+
+    const cardRating: HTMLHeadingElement = movieDetailsDiv.querySelector(
+      '.text-body-secondary'
+    )!;
+
+    cardTitle.textContent = curCardDetails?.title;
+    cardText.textContent = curCardDetails?.overview;
+    cardRating.innerHTML =
+      '<strong>Rating: </strong>' + curCardDetails?.vote_average + '⭐';
+
+    movieContainer.classList.add('d-none');
+    movieDetailsDiv.classList.remove('d-none');
   }
 
   //console.log(e);
@@ -91,3 +139,21 @@ movieContainer.addEventListener('click', (e: MouseEvent) => {
         </div>
       `;
 */
+
+// window.addEventListener('DOMContentLoaded', (e: Event) => {
+//   console.log('fired!');
+//   const path = window.location.pathname;
+//   const match = path.match(/^\/details\/(\d+)$/);
+//   console.log(match);
+//   if (match) window.location.href = BASE_URL;
+// });
+
+window.onpopstate = function (e: Event) {
+  console.log(e);
+};
+
+function goBack(): void {
+  movieContainer.classList.remove('d-none');
+  movieDetailsDiv.classList.add('d-none');
+  history.back();
+}
